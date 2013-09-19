@@ -23,6 +23,27 @@ class Pad {
 
   void move() {
   }
+  
+  void render(boolean toCanvas){
+   if(toCanvas){
+    displayToCanvas();
+   }else{
+     display();
+   } 
+  }
+  void displayToCanvas(){
+     Vec2 pos = body.getWorldCenter();
+    Vec2 target = box2d.coordPixelsToWorld(mouseX, height-10);
+    Vec2 sub = target.sub(pos);
+    body.setLinearVelocity(sub.mulLocal(4)); 
+    Vec2 pos2 = box2d.getBodyPixelCoord(body);
+    canvas.pushMatrix();
+    canvas.translate(pos2.x,pos2.y);
+    canvas.rectMode(CENTER);
+    canvas.fill(255);
+    canvas.rect(0,0,70,10);
+    canvas.popMatrix();
+  }
   void display() {
     Vec2 pos = body.getWorldCenter();
     Vec2 target = box2d.coordPixelsToWorld(mouseX, height-10);
@@ -33,7 +54,7 @@ class Pad {
     translate(pos2.x, pos2.y);
     rectMode(CENTER);
     fill(255);
-    stroke(255, 0, 0);
+    
     rect(0, 0, 70, 10);
     popMatrix();
   }

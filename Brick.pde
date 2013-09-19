@@ -33,6 +33,16 @@ class Brick {
    box2d.destroyBody(b); 
   }
   
+  void displayToCanvas(){
+    Vec2 pos = box2d.getBodyPixelCoord(b);
+    canvas.pushMatrix();
+    canvas.translate(pos.x,pos.y);
+    canvas.rectMode(CENTER);
+    canvas.noStroke();
+    canvas.rect(0,0,w,h);
+    canvas.popMatrix();
+  }
+  
   void display() {
     Vec2 pos = box2d.getBodyPixelCoord(b);
     pushMatrix();

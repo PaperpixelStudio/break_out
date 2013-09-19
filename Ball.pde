@@ -34,6 +34,26 @@ class Ball {
     return false;
   }
 
+  void render() {
+    display();
+  }
+  void render(boolean toCanvas) {
+    if (toCanvas) {
+      displayToCanvas();
+    }
+    else {
+      display();
+    }
+  }
+  void displayToCanvas() {
+    Vec2 pos = box2d.getBodyPixelCoord(body);
+    canvas.pushMatrix();
+    canvas.translate(pos.x, pos.y);
+    canvas.fill(255);
+    canvas.noStroke();
+    canvas.ellipse(0, 0, BALL_SIZE, BALL_SIZE);
+    canvas.popMatrix();
+  }
   void display() {
     Vec2 pos = box2d.getBodyPixelCoord(body);
     pushMatrix();

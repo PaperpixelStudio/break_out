@@ -17,10 +17,17 @@ class Wall {
       }
     }
   }
-  void act() {
+  void act(boolean toCanvas) {
+    
     checkBricks();
-    display();
+    if(toCanvas){
+      displayToCanvas();
+    }else{
+     display(); 
+    }
   }
+  
+ 
   void checkBricks() {
     Iterator<Brick> it = bricks.iterator();
     while (it.hasNext ()) {
@@ -37,6 +44,13 @@ class Wall {
     setup();
   }
 
+  void displayToCanvas(){
+   canvas.colorMode(HSB);
+   canvas.fill(frameCount%255,200,200);
+  for(Brick b:bricks){
+   b.displayToCanvas();
+  } 
+  }
   void display() {
     colorMode(HSB);
     fill(frameCount%255, 200, 200);
