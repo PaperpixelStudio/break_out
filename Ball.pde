@@ -14,9 +14,9 @@ class Ball {
     cs.m_radius = box2d.scalarPixelsToWorld(BALL_SIZE);
     FixtureDef fd = new FixtureDef();
     fd.shape = cs;
-    fd.friction = 0.0;
+    fd.friction = .4;
     fd.restitution = 1;
-    body.setLinearVelocity(new Vec2(0, -20));
+    body.setLinearVelocity(new Vec2(-7, -20));
     body.createFixture(fd);
     body.setUserData(this);
   } 
@@ -35,9 +35,11 @@ class Ball {
   }
 
   void render() {
+
     display();
   }
   void render(boolean toCanvas) {
+    //body.setLinearVelocity(new Vec2(7, -20));
     if (toCanvas) {
       displayToCanvas();
     }

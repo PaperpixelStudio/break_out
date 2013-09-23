@@ -11,7 +11,7 @@ class Wall {
   private void setup() {
     bricks = new ArrayList<Brick>();
     for (int i = 0; i <= width-BRICK_WIDTH/2; i+=BRICK_WIDTH+MARGIN) {
-      for (int j = 0; j < 200; j+=BRICK_HEIGHT + MARGIN) {
+      for (int j = 0; j < BRICK_HEIGHT*ROWS; j+=BRICK_HEIGHT + MARGIN) {
         Brick b = new Brick(i+BRICK_WIDTH/2, j+BRICK_HEIGHT/2);
         bricks.add(b);
       }
